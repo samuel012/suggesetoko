@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180421015446) do
+ActiveRecord::Schema.define(version: 20180421083101) do
 
   create_table "topics", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "jobs_count", default: 0
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "topic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["topic_id"], name: "index_votes_on_topic_id"
   end
 
 end
